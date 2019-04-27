@@ -10,13 +10,12 @@ module.exports.backgroundImageFile = path.join('.', 'background.jpg');
 
 module.exports.router = (req, res, next = ()=>{}) => {
   console.log('Serving request type ' + req.method + ' for url ' + req.url);
-  // if req.method = get then res.end(randomCommand)
+
   if (req.method === 'GET') {
     res.writeHead(200, headers);
-    // res.write('it works');
     res.write(messageQueue.dequeue());
     res.end();
   }
-  // res.writeHead(200, headers);
-  // res.end();
+  res.writeHead(404, headers);
+  res.end();
 };

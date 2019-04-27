@@ -8,9 +8,11 @@ module.exports.enqueue = (message) => {
 
 module.exports.dequeue = () => {
   // returns undefined if messages array is empty
-  return messages.shift();
+  if (messages.length !== 0) {
+    return messages.shift();
+  } else {
+    return '';
+  }
 };
 
-module.exports.getMessages = () => {
-  return messages[0];
-};
+module.exports.messages;
