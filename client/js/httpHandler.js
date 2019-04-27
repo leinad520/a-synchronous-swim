@@ -4,12 +4,31 @@
 
   //
   // TODO: build the swim command fetcher here
-  //
+  // 
 
   /////////////////////////////////////////////////////////////////////
   // The ajax file uplaoder is provided for your convenience!
   // Note: remember to fix the URL below.
   /////////////////////////////////////////////////////////////////////
+  const getKeyCommand = () => {
+    $.ajax({
+      type: 'GET',
+      url: serverUrl,
+      contentType: 'application/JSON',
+      success: (data) => {
+        console.log(data);
+        console.log('get request successful');
+      },
+      error: () => {
+        console.log('error');
+      }
+    })
+  }
+
+  $('.get-Commands').on('click', function() {
+    getKeyCommand();
+    console.log('clicked');
+  });
 
   const ajaxFileUplaod = (file) => {
     var formData = new FormData();
