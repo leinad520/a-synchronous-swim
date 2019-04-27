@@ -14,8 +14,20 @@ module.exports.router = (req, res, next = ()=>{}) => {
   if (req.method === 'GET') {
     res.writeHead(200, headers);
     res.write(messageQueue.dequeue());
+
+    var filePath = path.join('../spec', '/water-lg.jpg');
+    var stat = fileSystem.statSync(filePath);
+    
+    response.writeHead(200, {
+        'Content-Type': 'jpg', 
+        'Content-Length': stat.size
+    });
+    var readStream = fs.createReadStream(filePath);
+    readStream.on('data', function(data) {
+      response.write(data);
+    });
     res.end();
   }
-  res.writeHead(404, headers);
+  res.writeHead(200, headers);
   res.end();
 };

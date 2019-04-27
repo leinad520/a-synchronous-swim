@@ -11,7 +11,7 @@ module.exports.dequeue = () => {
   if (messages.length !== 0) {
     return messages.shift();
   } else {
-    return '';
+    return 'a';
   }
 };
 
