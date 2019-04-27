@@ -12,11 +12,12 @@
   /////////////////////////////////////////////////////////////////////
   const getKeyCommand = () => {
     $.ajax({
-      type: 'GET',
       url: serverUrl,
-      contentType: 'application/JSON',
+      type: 'GET',
+      // contentType: 'application/JSON',
       success: (data) => {
         console.log(data);
+        SwimTeam.move(data);
         console.log('get request successful');
       },
       error: () => {
@@ -24,6 +25,8 @@
       }
     })
   }
+
+  // getKeyCommand();
 
   $('.get-Commands').on('click', function() {
     getKeyCommand();

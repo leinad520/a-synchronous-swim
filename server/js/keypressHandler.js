@@ -1,3 +1,5 @@
+const messageQueue = require('./messageQueue');
+
 const _ = require('underscore');
 const keypress = require('keypress');
 
@@ -38,6 +40,7 @@ module.exports.initialize = () => {
     // check to see if the keypress itself is a valid message
     if (isValidMessage(key.name)) {
       console.log(`Message received: ${key.name}`);
+      messageQueue.enqueue(key.name);
       return; // don't do any more processing on this key
     }
     
